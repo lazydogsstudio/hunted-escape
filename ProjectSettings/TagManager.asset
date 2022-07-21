@@ -7,6 +7,8 @@ TagManager:
   - Door
   - Key
   - Place
+  - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - Intract
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
