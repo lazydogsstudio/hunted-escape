@@ -11,7 +11,7 @@ public class IntreactSound : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            AudioManager.instance.PlayCustomAudio(audioClip);
+            // AudioManager.instance.PlayCustomAudio(audioClip);
         }
     }
 }

@@ -51,6 +51,11 @@ public class Movement : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime);
     }
 
+    public void SetPlayerSpeed(float value)
+    {
+        speed = value;
+    }
+
 
 
 

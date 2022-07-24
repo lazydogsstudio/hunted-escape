@@ -7,7 +7,17 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     AudioSource audioSource;
 
+
+    public AudioSource enemyChaseSound;
+    public AudioSource backGroundSound;
+
     public AudioClip enemyChaseAudio;
+
+
+    public enum BGState
+    {
+
+    }
 
 
     void Awake()
@@ -17,7 +27,6 @@ public class AudioManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
         else
         {
             Destroy(gameObject);
@@ -29,15 +38,20 @@ public class AudioManager : MonoBehaviour
         audioSource = GameObject.FindWithTag("Player").GetComponent<AudioSource>();
     }
 
-    public void PlayCustomAudio(AudioClip audioClip)
+    public void PlayEnemyChaseSound(bool value)
     {
-        audioSource.PlayOneShot(audioClip);
+        if (value)
+            enemyChaseSound.Play();
+        else
+            enemyChaseSound.Stop();
     }
 
-    public void PlayEnemyChaseSound()
+    public void playBackGroundSound(bool value)
     {
-        audioSource.PlayOneShot(enemyChaseAudio);
-
+        if (value)
+            backGroundSound.Play();
+        else
+            backGroundSound.Stop();
     }
 
 

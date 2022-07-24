@@ -2081,6 +2081,7 @@ GameObject:
   - component: {fileID: 4471068232500637207}
   - component: {fileID: 231042827}
   - component: {fileID: 4647765181337810905}
+  - component: {fileID: 1836469995}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -2149,7 +2150,7 @@ MonoBehaviour:
   - {fileID: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   enemyEye: {fileID: 5568325042323391822}
 --- !u!54 &4471068232500637207
 Rigidbody:
@@ -2200,6 +2201,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1836469995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471068232500637292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e56f4427c9ddd45a6684c891cb10bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4488095576775454927
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,11 +10,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject _hudPanel;
     [SerializeField] private GameObject _gameoverPanel;
 
-    [SerializeField] private GameObject _playerSection;
-    [SerializeField] private GameObject _enemySection;
-    [SerializeField] private GameObject _envSection;
-
-
     private void Awake()
     {
         if (instance == null)
@@ -31,6 +26,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         _settingPanel.SetActive(false);
+        AudioManager.instance.playBackGroundSound(true);
     }
 
     public void SetHUDPanel(bool value)
@@ -45,12 +41,7 @@ public class LevelManager : MonoBehaviour
 
     public void SetGameoverPanel(bool value)
     {
-        _hudPanel.SetActive(false);
-        _settingPanel.SetActive(false);
-        _enemySection.SetActive(false);
-        _envSection.SetActive(false);
         _gameoverPanel.SetActive(value);
-        ///_playerSection.SetActive(false);
 
     }
 
