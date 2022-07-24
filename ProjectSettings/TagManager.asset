@@ -9,11 +9,12 @@ TagManager:
   - Place
   - Ground
   - Enemy
+  - Random
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Intract
+  - Interact
   - Water
   - UI
   - Ground

@@ -21,8 +21,8 @@ public class FpsCamera : MonoBehaviour
         //Set only lookInput value
         lookInput = fixedtouch.touchDist;
 
-        float mouseX = lookInput.x * mouseSentivity * 10 * Time.deltaTime;
-        float mouseY = lookInput.y * mouseSentivity * 10 * Time.deltaTime;
+        float mouseX = lookInput.x * mouseSentivity * Time.deltaTime;
+        float mouseY = lookInput.y * mouseSentivity * Time.deltaTime;
 
         xRotation -= mouseY;
 
