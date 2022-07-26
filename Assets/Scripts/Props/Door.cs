@@ -35,10 +35,6 @@ public class Door : MonoBehaviour
     public void DoorOpen(bool openDoor)
     {
         open = (!open == openDoor) ? true : false;
-
-
-
-
     }
 
     public void DoorUnlock()

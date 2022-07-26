@@ -16,15 +16,7 @@ public class SceneLoader : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(instance);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        instance = this;
     }
 
     public async void LoadScene(string sceneName)

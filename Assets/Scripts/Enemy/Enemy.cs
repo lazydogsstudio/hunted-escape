@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
 
-        LevelManager.instance.SetGameoverPanel(true);
+        LevelUIManager.instance.SetGameoverPanel(true);
         AudioManager.instance.PlayEnemyChaseSound(value: false);
         AudioManager.instance.playBackGroundSound(false);
         //gameObject.SetActive(false);

@@ -5,13 +5,22 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    AudioSource audioSource;
+
+    public AudioSource audioSource;
 
 
     public AudioSource enemyChaseSound;
     public AudioSource backGroundSound;
 
     public AudioClip enemyChaseAudio;
+
+    [Header("Doors")]
+    public AudioClip doorOpenSound;
+    public AudioClip doorLockedSound;
+
+    [Header("Pickup & Drop")]
+    public AudioClip pickUpSound;
+    public AudioClip dropSound;
 
 
     public enum BGState
@@ -22,20 +31,7 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void Start()
-    {
-        audioSource = GameObject.FindWithTag("Player").GetComponent<AudioSource>();
+        instance = this;
     }
 
     public void PlayEnemyChaseSound(bool value)
@@ -46,6 +42,7 @@ public class AudioManager : MonoBehaviour
             enemyChaseSound.Stop();
     }
 
+
     public void playBackGroundSound(bool value)
     {
         if (value)
@@ -53,6 +50,29 @@ public class AudioManager : MonoBehaviour
         else
             backGroundSound.Stop();
     }
+
+
+    // Door Sounds
+    public void PlayDoorOpenSound()
+    {
+        audioSource.PlayOneShot(doorOpenSound);
+    }
+    public void PlayDoorLockedSound()
+    {
+        audioSource.PlayOneShot(doorLockedSound);
+    }
+
+
+    // Pick up & Drop
+    public void PlayDropSound()
+    {
+        audioSource.PlayOneShot(dropSound);
+    }
+    public void PlayPickupSound()
+    {
+        audioSource.PlayOneShot(pickUpSound);
+    }
+
 
 
 

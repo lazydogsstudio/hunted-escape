@@ -44,6 +44,7 @@ public class Interact : MonoBehaviour
         // Interact With Door
         if (hit.transform.gameObject.CompareTag("Door"))
         {
+
             openDoor();
         }
 
@@ -77,6 +78,8 @@ public class Interact : MonoBehaviour
 
         hit.rigidbody.transform.position = playerHand.transform.position;
 
+        AudioManager.instance.PlayPickupSound();
+
         _allReadyGrabed = true;
     }
 
@@ -84,6 +87,7 @@ public class Interact : MonoBehaviour
     // Drop/Throw Pickupable Object 
     public void onDrop()
     {
+
         Rigidbody rb = playerHand.transform.GetChild(0).gameObject.GetComponent<Rigidbody>();
         rb.useGravity = true;
         rb.isKinematic = false;
@@ -96,10 +100,7 @@ public class Interact : MonoBehaviour
         playerHand.transform.GetChild(0).parent = null;  // Player Hand Clear
 
         _allReadyGrabed = false; // No Object on Player Hand 
-
-
     }
-
 
 
     void openDoor()
@@ -108,11 +109,13 @@ public class Interact : MonoBehaviour
 
         if (door.locked)
         {
+            AudioManager.instance.PlayDoorLockedSound();
             HUDManager.instance.SetMessage(door.hint, timer: 4); //Show message door is locked
         }
 
         if (!door.locked) // If Door is not Locked
         {
+            AudioManager.instance.PlayDoorOpenSound();
             door.DoorOpen(true); // Door Toggle
         }
 

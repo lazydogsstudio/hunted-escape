@@ -6,9 +6,14 @@ public class Movement : MonoBehaviour
     public GameObject analog;
     public CharacterController characterController;
 
+    private Camera cam;
+
+    public Transform viewPoint;
+
     [Range(0, 10)]
     public float speed = 6f;
     public float gravity = -9.81f;
+    public float gravityMod = 2.5f;
     public float jumpHeight = 3f;
 
     public LayerMask layerMask; //Use for check player is Grounded
@@ -16,17 +21,27 @@ public class Movement : MonoBehaviour
 
     Vector2 moveInput = Vector2.zero;
     Vector3 velocity;
+    Vector3 _moveDiraction, _movement;
+
 
     bool _grounded;
     bool _crouched;
 
 
+    private void Start()
+    {
+        cam = Camera.main;
+    }
     void Update()
     {
-        PlayerGravity();
         PlayerMove();
     }
 
+    private void LateUpdate()
+    {
+        cam.transform.position = viewPoint.position;
+        cam.transform.rotation = viewPoint.rotation;
+    }
 
     public void PlayerCrouch(bool inputCrouch)
     {
@@ -37,18 +52,21 @@ public class Movement : MonoBehaviour
     void PlayerMove() //Player Move
     {
         // Player Move Input Value GET
-        float x = analog.transform.localPosition.x;
-        float z = analog.transform.localPosition.y;
+        _moveDiraction = new Vector3(analog.transform.localPosition.x, 0f, analog.transform.localPosition.y);
+        float yVelocity = _movement.y;
+        _movement = ((transform.forward * _moveDiraction.z) + (transform.right * _moveDiraction.x)).normalized;
+        _movement.y = yVelocity;
 
-        Vector3 move = transform.right * x + transform.forward * z;
 
-        characterController.Move(move * speed / 100 * Time.deltaTime);
-    }
+        if (characterController.isGrounded)
+            _movement.y = 0f;
+        _movement.y += Physics.gravity.y * Time.deltaTime * gravityMod;
 
-    void PlayerGravity() //Player Gravity
-    {
-        velocity.y += gravity * Time.deltaTime;
-        characterController.Move(velocity * Time.deltaTime);
+
+        // _isGrounded = Physics.Raycast(groundCheckPoint.position, Vector3.down, .25f, groundLayerMask);
+        // Jump();
+
+        characterController.Move(_movement * Time.deltaTime);
     }
 
     public void SetPlayerSpeed(float value)
