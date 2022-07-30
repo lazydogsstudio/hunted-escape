@@ -33,14 +33,15 @@ public class SettingController : MonoBehaviour
     }
 
 
+
     public void SetMusic()
     {
-        audioMixer.SetFloat("MusicVolume", Mathf.Log10(_musicSlider.value) * 20f);
+        audioMixer.SetFloat("MusicVolume", _musicSlider.value);
     }
 
     public void SetSFX()
     {
-        audioMixer.SetFloat("SFXVolume", Mathf.Log10(_soundFxSlider.value) * 20f);
+        audioMixer.SetFloat("SFXVolume", _soundFxSlider.value);
     }
 
 

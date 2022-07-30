@@ -112,18 +112,6 @@ public class Interact : MonoBehaviour
         Door door = hit.transform.gameObject.GetComponent<Door>();
 
 
-
-        if (!door.locked) // If Door is not Locked
-        {
-            AudioManager.instance.PlayDoorOpenSound();
-            door.DoorOpen(true); // Door Toggle
-        }
-        else
-        {
-            AudioManager.instance.PlayDoorLockedSound();
-            HUDManager.instance.SetMessage(door.hint, timer: 4); //Show message door is locked
-        }
-
         if (door.locked &&
        playerHand.transform.childCount > 0 &&
        playerHand.transform.GetChild(0).CompareTag("Key")) // If Door is Locked
@@ -134,6 +122,26 @@ public class Interact : MonoBehaviour
             {
                 door.DoorUnlock(); // Unlock The Door
                 // door.DoorOpen(true); // Open The Door
+            }
+            else
+            {
+                AudioManager.instance.PlayDoorLockedSound();
+                HUDManager.instance.SetMessage(door.hint, timer: 4); //Show message door is locked
+            }
+        }
+
+        else
+        {
+
+            if (!door.locked) // If Door is not Locked
+            {
+                AudioManager.instance.PlayDoorOpenSound();
+                door.DoorOpen(true); // Door Toggle
+            }
+            else
+            {
+                AudioManager.instance.PlayDoorLockedSound();
+                HUDManager.instance.SetMessage(door.hint, timer: 4); //Show message door is locked
             }
         }
 

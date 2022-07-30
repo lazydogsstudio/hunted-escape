@@ -80,7 +80,10 @@ public class Enemy : MonoBehaviour
 
     void HandelEnemyFollow()
     {
-        float playerDistance = Vector3.Distance(transform.position, playerBody.transform.position);
+        Vector2 playerPosition = new Vector2(playerBody.transform.position.x, playerBody.transform.position.z);
+        Vector2 enemyPosition = new Vector2(transform.position.x, transform.position.z);
+
+        float playerDistance = (playerPosition - enemyPosition).magnitude;
 
         if (playerDistance < followDistance)
         {
