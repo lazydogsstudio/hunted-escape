@@ -15,6 +15,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip enemyChaseAudio;
 
     [Header("Doors")]
+    public AudioSource playerFootStepSound;
+    public bool isPlayerfootStepSoundPlaying;
+
+    [Header("Doors")]
     public AudioClip doorOpenSound;
     public AudioClip doorLockedSound;
 
@@ -23,15 +27,17 @@ public class AudioManager : MonoBehaviour
     public AudioClip dropSound;
 
 
-    public enum BGState
-    {
+    [Header("Voice Over")]
 
-    }
+    public AudioClip redRoomVoiceOver;
+    public AudioClip topFloorVoiceOver;
+    public AudioClip controllRoomVoiceOver;
 
 
     void Awake()
     {
         instance = this;
+
     }
 
     public void PlayEnemyChaseSound(bool value)
@@ -75,5 +81,21 @@ public class AudioManager : MonoBehaviour
 
 
 
+    ////////////////////////// Voice Overs Audio Controll ///////////////////////////
+
+
+    public void PlayRedRoomVoiceOver()
+    {
+        audioSource.PlayOneShot(redRoomVoiceOver);
+    }
+    public void PlayTopFloorVoiceOver()
+    {
+        audioSource.PlayOneShot(topFloorVoiceOver);
+    }
+
+    public void PlayControllRoomVoiceOver()
+    {
+        audioSource.PlayOneShot(controllRoomVoiceOver);
+    }
 
 }
