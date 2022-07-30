@@ -71,10 +71,14 @@ public class Interact : MonoBehaviour
     void onPickup()
     {
         hit.rigidbody.GetComponent<Rigidbody>().useGravity = false;
+
         hit.rigidbody.transform.SetParent(playerHand.transform);
+
+        hit.rigidbody.transform.localRotation = Quaternion.identity;
+
         hit.rigidbody.isKinematic = true;
 
-        hit.rigidbody.transform.localRotation = Camera.main.transform.rotation;
+        ///hit.rigidbody.transform.localRotation = Camera.main.transform.rotation;
 
         hit.rigidbody.transform.position = playerHand.transform.position;
 
@@ -107,34 +111,33 @@ public class Interact : MonoBehaviour
     {
         Door door = hit.transform.gameObject.GetComponent<Door>();
 
-        if (door.locked)
-        {
-            AudioManager.instance.PlayDoorLockedSound();
-            HUDManager.instance.SetMessage(door.hint, timer: 4); //Show message door is locked
-        }
+
 
         if (!door.locked) // If Door is not Locked
         {
             AudioManager.instance.PlayDoorOpenSound();
             door.DoorOpen(true); // Door Toggle
         }
-
-
+        else
+        {
+            AudioManager.instance.PlayDoorLockedSound();
+            HUDManager.instance.SetMessage(door.hint, timer: 4); //Show message door is locked
+        }
 
         if (door.locked &&
-        playerHand.transform.childCount > 0 &&
-        playerHand.transform.GetChild(0).CompareTag("Key")) // If Door is Locked
+       playerHand.transform.childCount > 0 &&
+       playerHand.transform.GetChild(0).CompareTag("Key")) // If Door is Locked
         {
             Key key = playerHand.transform.GetChild(0).gameObject.GetComponent<Key>(); // Get Key Data
 
             if (key.keyId == door.doorId) //If Key ID and Door ID is Same 
             {
                 door.DoorUnlock(); // Unlock The Door
-
-                door.DoorOpen(true); // Open The Door
+                // door.DoorOpen(true); // Open The Door
             }
-
         }
+
+
     }
 
 }
