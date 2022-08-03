@@ -5,12 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-
-
-    public enum enemyState
-    {
-        walk, chase, attack
-    }
+    private float _health = 100f;
 
     [Header("Player Following")]
     public Transform playerBody;
@@ -20,11 +15,13 @@ public class Enemy : MonoBehaviour
     public float followSpeed;
 
     [Header("Random Walk")]
-    [Range(1f, 5f)]
+    [Range(1f, 3f)]
     public float walkSpeed;
     public List<Transform> randomPostions;
     public LayerMask layerMask;
     public Transform enemyEye;
+
+    public GameObject mainGateKey;
 
     Vector3 _newDestination;
     NavMeshAgent _navMashAgent;
@@ -33,6 +30,8 @@ public class Enemy : MonoBehaviour
     RaycastHit _hit;
 
     bool _allreadyRandomPostion, _allreadyPlayerFollow;
+
+    bool _enemyDie;
 
     void Start()
     {
@@ -43,14 +42,40 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        HandelEnemyFollow();
-        HandelEnemyAttack();
+        if (!_enemyDie)
+        {
+            HandelEnemyFollow();
+            HandelEnemyAttack();
+        }
+
     }
 
+
+    public void takeDamage()
+    {
+        if (!_enemyDie)
+        {
+            if (_health <= 0)
+                die();
+            else
+                _health -= 100f;
+        }
+    }
+
+    public void die()
+    {
+
+        _enemyDie = true;
+        _anim.SetTrigger("Die");
+        Instantiate(mainGateKey, transform.position + new Vector3(0f, 3f, 0f), Quaternion.identity);
+
+
+    }
 
 
     void HandelEnemyAttack()
     {
+
         if (Physics.Raycast(enemyEye.position, enemyEye.TransformDirection(Vector3.forward), out _hit, 3.5f, layerMask))
         {
             if (_hit.collider.CompareTag("Player"))

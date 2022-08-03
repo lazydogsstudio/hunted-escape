@@ -20,10 +20,13 @@ public class SettingController : MonoBehaviour
     [SerializeField]
     private Slider _soundFxSlider;
 
+    private float _x;
 
     private void Start()
     {
         _dropdown.value = QualitySettings.GetQualityLevel();
+        _musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        _soundFxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
     }
 
     public void SetQulalityLevel(int value)
@@ -32,16 +35,16 @@ public class SettingController : MonoBehaviour
         QualitySettings.renderPipeline = _qualityLevels[value];
     }
 
-
-
     public void SetMusic()
     {
         audioMixer.SetFloat("MusicVolume", _musicSlider.value);
+        PlayerPrefs.SetFloat("MusicVolume", _musicSlider.value);
     }
 
     public void SetSFX()
     {
         audioMixer.SetFloat("SFXVolume", _soundFxSlider.value);
+        PlayerPrefs.SetFloat("SFXVolume", _soundFxSlider.value);
     }
 
 

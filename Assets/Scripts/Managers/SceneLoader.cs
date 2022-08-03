@@ -17,6 +17,7 @@ public class SceneLoader : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        _loaderCanves.SetActive(false);
     }
 
     public async void LoadScene(string sceneName)
@@ -33,7 +34,7 @@ public class SceneLoader : MonoBehaviour
         } while (scene.progress < 0.9f);
 
         await System.Threading.Tasks.Task.Delay(2500);
-        _loaderCanves.SetActive(false);
+        /// _loaderCanves.SetActive(false);
         scene.allowSceneActivation = true;
 
     }

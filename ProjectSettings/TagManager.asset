@@ -10,6 +10,8 @@ TagManager:
   - Ground
   - Enemy
   - Random
+  - Gun
+  - Ammo
   layers:
   - Default
   - TransparentFX

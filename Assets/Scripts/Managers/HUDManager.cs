@@ -13,6 +13,10 @@ public class HUDManager : MonoBehaviour
     public GameObject dropButton;
     public GameObject interactButton;
 
+    [Header("Gun UI")]
+    public GameObject gunUI;
+    public Text ammoText;
+
     void Awake()
     {
         instance = this;
@@ -53,6 +57,18 @@ public class HUDManager : MonoBehaviour
     public void SetActiveIntractButton(bool value)
     {
         interactButton.SetActive(value);
+    }
+
+    public void SetActiveGunUI(bool value)
+    {
+        gunUI.SetActive(value);
+
+    }
+
+    public void SetAmmoValue(int value)
+    {
+        ammoText.text = value.ToString();
+
     }
 }
 

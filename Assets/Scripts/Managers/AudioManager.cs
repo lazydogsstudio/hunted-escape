@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip enemyChaseAudio;
 
+
+
     [Header("Doors")]
     public AudioSource playerFootStepSound;
     public bool isPlayerfootStepSoundPlaying;
@@ -32,6 +34,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip redRoomVoiceOver;
     public AudioClip topFloorVoiceOver;
     public AudioClip controllRoomVoiceOver;
+
+    [Header("Gun")]
+    public AudioClip fireSound;
 
 
     void Awake()
@@ -98,4 +103,9 @@ public class AudioManager : MonoBehaviour
         audioSource.PlayOneShot(controllRoomVoiceOver);
     }
 
+
+    public void PlayFireSound()
+    {
+        audioSource.PlayOneShot(fireSound);
+    }
 }
