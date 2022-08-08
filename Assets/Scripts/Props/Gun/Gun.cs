@@ -6,7 +6,11 @@ public class Gun : MonoBehaviour
 {
     private int _ammo = 0;
     private float _shotCounter;
-    public float timeBetweenShorts = 0.1f;
+
+    [SerializeField]
+    ParticleSystem _fireExplosion;
+
+
 
     void Start()
     {
@@ -40,6 +44,7 @@ public class Gun : MonoBehaviour
                 }
             }
 
+            _fireExplosion.Play();
             AudioManager.instance.PlayFireSound();
             _ammo--;
             HUDManager.instance.SetAmmoValue(_ammo);
