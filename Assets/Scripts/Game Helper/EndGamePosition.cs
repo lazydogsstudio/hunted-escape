@@ -16,4 +16,5 @@ public class EndGamePosition : MonoBehaviour
             VideoManager.instance.PlayEndVideo();
         }
     }
+   
 }

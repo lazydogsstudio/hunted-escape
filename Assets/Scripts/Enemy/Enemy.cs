@@ -47,6 +47,10 @@ public class Enemy : MonoBehaviour
             HandelEnemyFollow();
             HandelEnemyAttack();
         }
+        else
+        {
+            _navMashAgent.speed = 0f; // Stop
+        }
 
     }
 
@@ -67,7 +71,7 @@ public class Enemy : MonoBehaviour
 
         _enemyDie = true;
         _anim.SetTrigger("Die");
-        Instantiate(mainGateKey, transform.position + new Vector3(0f, 3f, 0f), Quaternion.identity);
+        Instantiate(mainGateKey, transform.position, Quaternion.identity);
 
 
     }

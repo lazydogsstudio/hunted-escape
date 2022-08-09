@@ -6,11 +6,7 @@ public class Gun : MonoBehaviour
 {
     private int _ammo = 0;
     private float _shotCounter;
-
-    [SerializeField]
-    ParticleSystem _fireExplosion;
-
-
+    public ParticleSystem _fireExplosion;
 
     void Start()
     {

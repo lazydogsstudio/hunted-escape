@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f44249bf1edeeb848bb45f5283247cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenShorts: 0.1
+  _fireExplosion: {fileID: 198357973136645638, guid: 67a684e320da6e7439421a07e3fa265c, type: 3}
 --- !u!1 &3140794593461329839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,6 +1125,26 @@ PrefabInstance:
     - target: {fileID: 4563802948693442, guid: 67a684e320da6e7439421a07e3fa265c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198320247807911846, guid: 67a684e320da6e7439421a07e3fa265c, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198357973136645638, guid: 67a684e320da6e7439421a07e3fa265c, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198426081105753050, guid: 67a684e320da6e7439421a07e3fa265c, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198559278997166938, guid: 67a684e320da6e7439421a07e3fa265c, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198794646228705736, guid: 67a684e320da6e7439421a07e3fa265c, type: 3}
+      propertyPath: lengthInSec
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67a684e320da6e7439421a07e3fa265c, type: 3}

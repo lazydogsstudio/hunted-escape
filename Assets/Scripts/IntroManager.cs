@@ -6,6 +6,7 @@ public class IntroManager : MonoBehaviour
 {
     public int introSize;
 
+
     void Start()
     {
         StartCoroutine(LoadMainMenu(introSize));
