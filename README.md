@@ -2,8 +2,12 @@
 
 A Indie Horror Game
 
+#
 [![Youtube](https://www.freeiconspng.com/thumbs/youtube-logo-png/youtube-logo-png-transparent-image-5.png)](https://www.youtube.com/watch?v=_zQVtI-IS6k)
 
+
+[![PlayStore](https://upload.wikimedia.org/wikipedia/commons/e/ee/Google_Play_logo.png)](https://play.google.com/store/apps/details?id=com.lazydogsstudio.huntedescape)
+#
 
 ## GamePlay Screenshot
 
