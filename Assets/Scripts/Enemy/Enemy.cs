@@ -73,6 +73,8 @@ public class Enemy : MonoBehaviour
         _anim.SetTrigger("Die");
         Instantiate(mainGateKey, transform.position, Quaternion.identity);
 
+        Destroy(gameObject, 2.5f);
+
 
     }
 

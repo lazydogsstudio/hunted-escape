@@ -108,4 +108,10 @@ public class AudioManager : MonoBehaviour
     {
         audioSource.PlayOneShot(fireSound);
     }
+
+
+    public void PlayCustomAudio(AudioClip value)
+    {
+        audioSource.PlayOneShot(value);
+    }
 }
